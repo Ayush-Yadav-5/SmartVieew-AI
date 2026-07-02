@@ -1,8 +1,327 @@
-## Running the code
+## Running the code (Frontend)
 
 Run `npm i` to install the dependencies.
 
 Run `npm run dev` to start the development server.
+
+
+
+
+## For backend 
+# SmartVieew AI Backend
+
+Backend services for **SmartVieew AI – Autonomous Urban Intelligence Platform**.
+
+This backend powers the AI detection pipeline, video processing, incident generation, and APIs used by the SmartVieew dashboard.
+
+---
+
+# Features
+
+- AI-powered weapon detection using YOLO
+- Live CCTV/RTSP stream processing
+- Video upload support
+- Incident generation
+- REST APIs
+- CORS enabled
+- Ready for integration with Risk Assessment Agent
+
+---
+
+# Tech Stack
+
+- Python 3.11+
+- Flask
+- Flask-CORS
+- Ultralytics YOLO
+- OpenCV
+- NumPy
+- yt-dlp
+
+---
+
+# Project Structure
+
+```
+backend/
+
+├── weapon-detection-server.py
+├── weapon-detection-server-fixed.py
+├── requirements.txt
+├── verify-detection-setup.py
+├── verify-model-classes.py
+├── test-model-classes.py
+├── test-all-feeds.py
+├── test-parallel-detection.py
+└── test-screenshot-capture.py
+```
+
+---
+
+# Prerequisites
+
+- Python 3.11 or later
+- pip
+- Git
+
+(Optional)
+
+- CUDA-enabled GPU
+- NVIDIA Drivers
+- CUDA Toolkit
+
+The backend also works on CPU.
+
+---
+
+# Installation
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/<your-username>/SmartVieew-AI.git
+
+cd SmartVieew-AI
+```
+
+---
+
+## 2. Create Virtual Environment
+
+### Linux/macOS
+
+```bash
+python3 -m venv venv
+```
+
+### Windows
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 3. Activate Virtual Environment
+
+### Linux/macOS
+
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+```cmd
+venv\Scripts\activate
+```
+
+---
+
+## 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# Running the Backend
+
+Start the Flask server:
+
+```bash
+python weapon-detection-server.py
+```
+
+or
+
+```bash
+python weapon-detection-server-fixed.py
+```
+
+The server will start on the configured host and port (typically `http://localhost:5000` unless changed in the code).
+
+---
+
+# Verify Installation
+
+Run:
+
+```bash
+python verify-detection-setup.py
+```
+
+This checks:
+
+- Python version
+- OpenCV installation
+- YOLO installation
+- Model availability
+- Required dependencies
+
+---
+
+# Testing
+
+Model verification
+
+```bash
+python verify-model-classes.py
+```
+
+Test model
+
+```bash
+python test-model-classes.py
+```
+
+Test live feeds
+
+```bash
+python test-all-feeds.py
+```
+
+Parallel detection
+
+```bash
+python test-parallel-detection.py
+```
+
+Screenshot capture
+
+```bash
+python test-screenshot-capture.py
+```
+
+---
+
+# Requirements
+
+Main dependencies:
+
+```
+Flask
+Flask-CORS
+Ultralytics YOLO
+OpenCV
+NumPy
+yt-dlp
+```
+
+Install manually if needed:
+
+```bash
+pip install flask flask-cors ultralytics opencv-python-headless numpy yt-dlp
+```
+
+---
+
+# API Overview
+
+The backend is responsible for:
+
+- Receiving video streams
+- Running YOLO inference
+- Detecting weapons
+- Returning detection results
+- Sending incidents to the frontend
+
+Typical workflow:
+
+```
+Camera Feed
+      │
+      ▼
+Frame Extraction
+      │
+      ▼
+YOLO Detection
+      │
+      ▼
+Detection Results
+      │
+      ▼
+Incident Generation
+      │
+      ▼
+Frontend Dashboard
+```
+
+---
+
+# Future Enhancements
+
+Upcoming SmartVieew AI backend features:
+
+- Risk Assessment Agent (LLM)
+- Incident Management Service
+- AI-generated Reports
+- Notification Service
+- Traffic Intelligence
+- Civic Infrastructure Monitoring
+- Fire Detection
+- Edge AI Deployment
+
+---
+
+# Troubleshooting
+
+## OpenCV Error
+
+Reinstall OpenCV:
+
+```bash
+pip install --upgrade opencv-python-headless
+```
+
+---
+
+## YOLO Model Not Found
+
+Download the required model:
+
+```bash
+yolo predict model=yolov8n.pt source=test.jpg
+```
+
+or place your trained model in the configured models directory.
+
+---
+
+## ModuleNotFoundError
+
+Install all dependencies again:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Virtual Environment Issues
+
+Deactivate:
+
+```bash
+deactivate
+```
+
+Remove:
+
+```bash
+rm -rf venv
+```
+
+Create again:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
 
 
 
